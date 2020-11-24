@@ -26,7 +26,7 @@ for((i=0; i<4; i++))
 do
         for((j=i+1; j<4; j++))
         do
-                if [ ${res[i]} -lt ${res[$((j))]} ]
+                if [ ${res[i]} -gt ${res[$((j))]} ]
                 then
                         temp=${res[i]}
                         res[$i]=${res[$((j))]}
@@ -35,4 +35,4 @@ do
         done
 done
 
-echo -ne "\n Array After Sorting In Decending Order : ${res[@]}\n"
+echo -ne "\n Array After Sorting In Ascending Order : ${res[@]}\n"
