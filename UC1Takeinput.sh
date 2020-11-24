@@ -1,16 +1,38 @@
-#!/bin/bash -x
-read -p "enter the input first " a
-read -p "enetr the second input " b
-read -p  "enetr the third  input " c
-#declare -A variable
-var=$(($a+$b*$c))
-var1=$(($a*$b+$c))
-var2=$(($c+$a/$b))
-var3=$(($a%$b+$c))
-variable=($var $var1 $va2 $var3)
-#variable[var]=$var
-#variable[var1]=$var1
-#variable[var2]=$var2
-#variable[var3]=$var3
-echo "values in array :${variable[@]}"
-echo "number of key values :${!variable[@]}"
+#!/bin/bash
+
+read -p "Enter First Number : " a
+read -p "Enter Second Number : " b
+read -p "Enter Third Number : " c
+
+var=$(( a+(b*c) ))
+var1=$(( (a*b)+c ))
+var2=$(( c+(a/b) ))
+var3=$(( a%(b/c) ))
+
+echo $var
+echo $var1
+echo $var2
+echo $var3
+
+res[0]=$var
+res[1]=$var1
+res[2]=$var2
+res[3]=$var3
+
+echo -ne "\n Index Numbers : ${!res[@]}"
+echo -ne "\n Array Before Sorting : ${res[@]}"
+
+for((i=0; i<4; i++))
+do
+        for((j=i+1; j<4; j++))
+        do
+                if [ ${res[i]} -lt ${res[$((j))]} ]
+                then
+                        temp=${res[i]}
+                        res[$i]=${res[$((j))]}
+                        res[$((j))]=$temp
+                fi
+        done
+done
+
+echo -ne "\n Array After Sorting In Decending Order : ${res[@]}\n"
